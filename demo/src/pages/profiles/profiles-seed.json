@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "email": "pedro.infante@cielo.com",
+      "name": "Pedro Infante",
+      "description": "Fue un cantante y actor mexicano, uno de los iconos la Época de Oro del Cine Mexicano, así como uno de los representantes de la música ranchera."
+    },
+    {
+      "id": 2,
+      "email": "maria.felix@cielo.com",
+      "name": "María Félix",
+      "description": "Fue una actriz mexicana. Es una de las figuras femeninas más importantes de la llamada Época de Oro del cine mexicano. Se le considera una de las actrices más bellas de su tiempo y un mito erótico del cine de habla hispana."
+    },
+    {
+      "id": 3,
+      "email": "cantinflas@cielo.com",
+      "name": "Cantinflas",
+      "description": "Conocido como Mario Moreno y por su apodo Cantinflas, fue un actor, productor, guionista y comediante del cine mexicano. El personaje se asoció y se sigue asociando con la identidad nacional de México y le permitió a Cantinflas establecer una larga y exitosa carrera cinematográfica que incluyó una incursión en Hollywood."
+    },
+    {
+      "id": 4,
+      "email": "tin.tan@cielo.com",
+      "name": "Tin Tan",
+      "description": "Germán Valdés más conocido por su seudónimo \"Tin Tan\", fue un actor, cantante y comediante de la época del cine de oro mexicano actuó en películas como: El bello durmiente, el vagabundo, isla de mujeres,etc."
+    }
+  ]
+}
