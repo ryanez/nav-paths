@@ -1,5 +1,4 @@
 # nav-paths
-===========
 
 [![NPM version](https://badgen.net/npm/v/nav-paths)](https://www.npmjs.com/package/nav-paths)
 [![License](https://badgen.net/npm/license/nav-paths)](https://www.npmjs.com/package/nav-paths)
