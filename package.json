@@ -1,6 +1,6 @@
 {
   "name": "nav-paths",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Router Navigation Framework",
   "main": "./lib/nav-paths.js",
   "scripts": {

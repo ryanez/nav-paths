@@ -2777,7 +2777,7 @@ core-js@3.2.1:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.2.1.tgz#cd41f38534da6cc59f7db050fe67307de9868b09"
   integrity sha512-Qa5XSVefSVPRxy2XfUC13WbvqkxhkwB3ve+pgCQveNgYzbM/UxZeu1dcOX/xr4UmfUd+muuvsaxilQzCyUurMw==
 
-core-js@^2.4.0:
+core-js@^2.4.0, core-js@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.10.tgz#8a5b8391f8cc7013da703411ce5b585706300d7f"
   integrity sha512-I39t74+4t+zau64EN1fE5v2W31Adtc/REhzWN+gWRRXg6WH5qAsZm62DHpQ1+Yhe4047T55jvzz7MUqF/dBBlA==
@@ -6433,6 +6433,14 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+
+nav-paths@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/nav-paths/-/nav-paths-0.1.1.tgz#4cc58e9354dc253b2cc23a9918d5fa5a77183291"
+  integrity sha512-O1S/eLXR7XDqzGjdb9baLo2sG6oHitFhpMtvRaUPYeXgPNxJbRyP6V3EJfBKIIAcEQo5UtDw3G7mGWHjwfgZqw==
+  dependencies:
+    core-js "^2.6.10"
+    react-router "^5.1.2"
 
 needle@^2.2.1:
   version "2.4.0"

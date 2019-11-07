@@ -71,5 +71,5 @@ export default createNavigation(history, Paths);
   // having on browser "/mexico/en-us/company/xyz/products/add"
   // the path would be "/:country/:language/company/:companyId/products/addd"
   // and you want to switch language.
-  navigate.from.CompanyProducts.to.CompanyProfucts({ language: 'es-mx' });
+  navigate.from.CompanyProducts.to.CompanyProducts({ language: 'es-mx' });
   ```

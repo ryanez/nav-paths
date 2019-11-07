@@ -25,8 +25,12 @@ export default function ProfileEdit({ profile }) {
     navigate.to.ProfileDetails({ profileId });
   }
 
-  useEffect(() => { reset(defaultValues); }, [profile, defaultValues, reset])
-
+  useEffect(() => reset({
+    email: profile.get("email"),
+    name: profile.get("name"),
+    description: profile.get("description")
+  }), [profile, reset]);
+  
   if (!profile) {
     return <Redirect to={Paths.Profiles} />;
   }  
