@@ -6,7 +6,6 @@
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "immutable": "^4.0.0-rc.12",
-    "nav-paths": "../",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-hook-form": "^3.26.5",
