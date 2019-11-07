@@ -1,4 +1,10 @@
 # nav-paths
+===========
+
+[![NPM version](https://badgen.net/npm/v/nav-paths)](https://www.npmjs.com/package/nav-paths)
+[![License](https://badgen.net/npm/license/nav-paths)](https://www.npmjs.com/package/nav-paths)
+[![Build status](https://badgen.net/travis/ryanez/nav-paths)](https://travis-ci.org/ryanez/nav-paths)
+
 A simple utility to create Navigation paths for react-router, such way it makes easy to 
 have in a single place all your application paths and to create urls to connect your 
 different pages.
