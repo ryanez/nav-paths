@@ -3,6 +3,7 @@
 [![NPM version](https://badgen.net/npm/v/nav-paths)](https://www.npmjs.com/package/nav-paths)
 [![License](https://badgen.net/npm/license/nav-paths)](https://www.npmjs.com/package/nav-paths)
 [![Build status](https://badgen.net/travis/ryanez/nav-paths)](https://travis-ci.org/ryanez/nav-paths)
+[![Coverage Status](https://coveralls.io/repos/github/ryanez/nav-paths/badge.svg?branch=master)](https://coveralls.io/github/ryanez/nav-paths?branch=master)
 
 A simple utility to create Navigation paths for react-router, such way it makes easy to 
 have in a single place all your application paths and to create urls to connect your 
