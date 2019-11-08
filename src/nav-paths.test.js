@@ -30,6 +30,11 @@ describe("nav-paths >", () => {
       const url = navigate.to.InvoicePayments(params, false);
       expect(url).to.equals('/es-MX/customer/cust-01/invoices/INV009/payments');
     });
+
+    it("should navigate by default to root `/`", () => {
+      navigate.to();
+      expect(push.calledWith("/")).to.equals(true)
+    });
   });
 
   describe("from > to", () => {
