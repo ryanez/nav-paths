@@ -21,6 +21,12 @@ function createNavigate(history, PATHS) {
     return navigate(toPath, { ...fromParams, ...params }, followLink);
   }
 
+  function replaceParams(path, params, ...args) {
+    const { pathname } = history.location;
+    const match = matchPath(pathname, { path }) || { params: {} };
+    return navigate(path, {...match.params, ...params }, ...args);
+  }
+
   navigate.to = PATHS_KEYS.reduce(
     (memo, key) => {
       const path = PATHS[key];
@@ -41,9 +47,16 @@ function createNavigate(history, PATHS) {
     return memoFrom;
   }, {});
 
+  navigate.replace = PATHS_KEYS.reduce((memo, key) => {
+    const path = PATHS[key];
+    memo[key] = (...args) => replaceParams(path, ...args);
+    return memo;
+  }, {});
+
   navigate.isPath = PATHS_KEYS.reduce((memo, key) => {
     const path = PATHS[key];
     memo[key] = (pathname, options = {}) => matchPath(pathname, { path, ...options }) !== null;
+    memo[key].exact = (pathname, options = {}) => memo[key](pathname, { exact: true, ...options});
     return memo;
   }, {});
 
@@ -52,11 +65,13 @@ function createNavigate(history, PATHS) {
     history.push(history.location);
   };
 
-  navigate.isActive = path => {
+  navigate.isActive = (path, options = {}) => {
     const { pathname } = history.location;
-    const result  = path && matchPath(pathname, { path });
-    return result;
+    const result  = path && matchPath(pathname, { path, ...options });
+    return !!result;
   }
+
+  navigate.isActive.exact = (path, options = {}) => navigate.isActive(path, { exact: true, ...options });
 
   return navigate;
 }

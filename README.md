@@ -13,7 +13,7 @@ different pages.
 npm install nav-paths --save
 ```
 
-## Useage
+## Usage
 ```js
 import navigate from './navigate';
 const profileId = 2;
@@ -38,6 +38,13 @@ export const Profiles = '/profiles';
 export const ProfileNew = `${Profiles}/new`;
 export const ProfileDetails = `${Profiles}/:profileId`;
 export const ProfileEdit = `${ProfileDetails}/edit`;
+
+export const HomeWithLanguage = `/:lang`;
+export const Customer = `${HomeWithLanguage}/customer/:customerId`;
+export const CustomerAddresses = `${Customer}/addresses`
+export const Invoices = `${Customer}/invoices`;
+export const Invoice = `${Invoices}/:invoiceId`;
+export const InvoicePayments = `${Invoice}/payments`;
 ```
 
 ```js
@@ -52,7 +59,7 @@ export default createNavigation(history, Paths);
 ```
 
 ## API
-### craeteNavigation
+### createNavigation
 `createNavigation(history, Paths)` Will return an object exposing the navigation utility methods.
 
 - `to.somePath(params, followLink)`. `to` is map containg all the given `paths` as `functions` that can build URLs and navigate to them.
@@ -67,14 +74,85 @@ export default createNavigation(history, Paths);
   // will return "/profiles/3" without navigation.
   ```
 
-- `from.somePath.toSomePath(params, followLink)`. `from` is a map of all the given paths where each item contains a `to` property which is also a map to all the given paths. Use this method when you certainly know where you are at a given moment. eg Inside `<ProfileDetails />` component you are sure the current url on the browser will be `/profiles/:profileId/details` and you want yo build a new URL and reuse the `:profileId`.
+- `from.somePath.to.SomePath(params, followLink)`. `from` is a map of all the given paths where each item contains a `to` property which is also a map to all the given paths. Use this method when you certainly know where you are at a given moment. eg Inside `<InvoicePayments />` component you are sure the current url on the browser will be `/:lang/customer/:customerId/invoices/:invoiceId/payments` and you want to navigate to `/:lang/customer/:customerId/addresses` without having to specify `{lang, customerId}` because they already are on the url.
   ```js
-  // havig on browser "/profiles/5"
-  const url = navigate.from.ProfileDetails.to.ProfileEdit({}, false);
-  // will return "/profiles/5/edit" without navigation.
+  // having on browser's url "/es-MX/customer/cust-01/invoices/INV009/payment"
+  const url = navigate.from.InvoicePayments.to.CustomerAddresses({}, false);
+  // -> "/es-MX/customer/cust-01/addresses"
 
-  // having on browser "/mexico/en-us/company/xyz/products/add"
-  // the path would be "/:country/:language/company/:companyId/products/addd"
-  // and you want to switch language.
-  navigate.from.CompanyProducts.to.CompanyProducts({ language: 'es-mx' });
+  // you replace only one param from the URL.
+  const url = navigate.from.InvoicePayments.to.InvoicePayments({ lang: 'en-us' }, false);
+  // -> "/en-us/customer/cust-01/invoices/INV009/payment"
+  ```
+- `replace.somePath(params, followLink)`. Will replace the given params from the current browser URL.
+  ```js
+  // having on browser's url "/es-MX/customer/cust-01/invoices/INV009/payment"
+
+  const url = navigate.replace.InvoicePayments({ lang: 'en-US' }, false);
+  // -> "/en-US/customer/cust-01/invoices/INV009/payment"
+  ```
+
+- `isPath.somePath(url, options)`. Will test the given url with the current history location and return a boolean value.
+  ```js
+  // having on history pathname "/profiles/4/edit"
+  const { isPath } = navigate;
+
+  console.log(isPath.ProfileEdit("/profiles/4/edit"));
+  // -> true
+  console.log(isPath.ProfileEdit("/profiles/4/edit", { exact: true }));
+  // -> true
+  console.log(isPath.ProfileEdit("/profiles"));
+  // -> true
+  console.log(isPath.ProfileEdit("/profiles", { exact: true }));
+  // -> false
+  console.log(isPath.ProfileEdit("/profiles/new"));
+  // -> false
+  ```
+
+- `isPath.somePath.exact(url)`. Will test the given url against the current history location with the option `{ exact: true }` as default.
+  ```js
+  // having on history pathname "/profiles/4/edit"
+  const { isPath } = navigate;
+
+  console.log(isPath.ProfileEdit.exact("/profiles/4/edit"));
+  // -> true
+  console.log(isPath.ProfileEdit.exact("/profiles");
+  // -> false
+  console.log(isPath.ProfileEdit.exact("/profiles/new"));
+  // -> false
+  ```
+- `clearHash()`. Handy shortcut to remove the hash from the url.
+  ```js
+  // having on browser url "/profiles/4/edit#help"
+
+  navigate.clearHash();
+
+  // browser's url will be now "/profiles/4/edit"
+  ```
+
+- `isActive(url, options)`. Matches the current history.pathname against the given URL, internally uses `matchPath` from `react-router`.
+  ```js
+  // having on history pathname "/profiles/4/edit"
+  const { isActive } = navigate;
+
+  console.log(isActive("/profiles/4/edit"));
+  // -> true
+  console.log(isActive("/profiles/4/edit", { exact: true }));
+  // -> true
+  console.log(isActive("/profiles"));
+  // -> true
+  console.log(isActive("/profiles", { exact: true }));
+  // -> false
+  console.log(isActive("/profiles/new"));
+  // -> false
+  ```
+
+- `isActive.exact(url, options)`. Matches the current `history.pathname` against the given URL, internally uses `matchPath` from `react-router` and sets options to `{ exact: true }` by default.
+  ```js
+  console.log(isActive.exact("/profiles/4/edit"));
+  // -> true
+  console.log(isActive.exact("/profiles");
+  // -> false
+  console.log(isActive.exact("/profiles/new"));
+  // -> false
   ```
