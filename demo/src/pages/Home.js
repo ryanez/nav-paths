@@ -1,10 +1,20 @@
 import React from 'react';
 
+const Badge = ({ alt, badgeUrl }) => (
+  <a className="mr-1" href={badgeUrl}><img src={badgeUrl} alt={alt}/></a>
+);
+
 export default function Home() {
   return (
     <div className="row">
       <div className="col-12">
         <h1 className="pt-5">Demo</h1>
+        <p>
+          <Badge alt="NPM Version" badgeUrl="https://badgen.net/npm/v/nav-paths"/>
+          <Badge alt="License" badgeUrl="https://badgen.net/npm/license/nav-paths"/>
+          <Badge alt="Build status" badgeUrl="https://badgen.net/travis/ryanez/nav-paths"/>
+          <Badge alt="Coverage Status" badgeUrl="https://coveralls.io/repos/github/ryanez/nav-paths/badge.svg?branch=master"/>
+        </p>
         <p>
           This demo was created in the first instance to show how to use the <a href="https://github.com/ryanez/nav-paths">nav-paths</a> framework.
           Then it scalated a little bit by the addtion of some frameworks and the use of React's new feature <strong>Hooks</strong>.

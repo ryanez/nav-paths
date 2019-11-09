@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Paths } from 'navigate';
 
 export default function NavBar() {
@@ -10,13 +10,13 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to={Paths.Home} className="nav-link">Home</Link>
+              <NavLink to={Paths.Home} className="nav-link" exact>Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link to={Paths.Profiles} className="nav-link">Profiles</Link>
+              <NavLink to={Paths.Profiles} className="nav-link">Profiles</NavLink>
             </li>
             <li className="nav-item">
-              <Link to={Paths.AboutUs} className="nav-link">About Us</Link>
+              <NavLink to={Paths.AboutUs} className="nav-link">About Us</NavLink>
             </li>
           </ul>
         </div>
